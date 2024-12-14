@@ -3,8 +3,6 @@ package state
 import (
 	"context"
 	"errors"
-	"fmt"
-
 	"github.com/0xPolygonHermez/zkevm-node/l1infotree"
 	"github.com/0xPolygonHermez/zkevm-node/log"
 	"github.com/ethereum/go-ethereum/common"
@@ -60,7 +58,7 @@ func (s *State) AddL1InfoTreeLeaf(ctx context.Context, l1InfoTreeLeaf *L1InfoTre
 		var ok bool
 		stateTx, ok = dbTx.(*StateTx)
 		if !ok {
-			return nil, fmt.Errorf("error casting dbTx to stateTx")
+			return nil, errors.New("error casting dbTx to stateTx")
 		}
 	}
 	var newIndex uint32
